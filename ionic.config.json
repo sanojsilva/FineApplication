@@ -1,0 +1,7 @@
+{
+  "name": "fineApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
