@@ -1,0 +1,29 @@
+<!--
+  Generated template for the AddFinePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar  color="coolGreen">
+    <ion-title>Add Fine</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item *ngFor="let fine of fines">
+      <ion-label>{{ fine.name }}</ion-label>
+      <ion-checkbox [(ngModel)]="fine.selected"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button medium block color="danger" (click)="onSetClick()">Set Fine</button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
