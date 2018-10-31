@@ -14,14 +14,14 @@ export class AuthProvider {
   url: string = environment.apiHost;
 
   constructor(public http: HttpClient) {
-    console.log('Hello AuthProvider Provider');
+    //console.log('Hello AuthProvider Provider');
   }
 
   public login(username, password) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=UTF-8'
     });
-    
+    console.log(this.url);
     return this.http.post(
       this.url + '/login',
       JSON.stringify({username, password}),

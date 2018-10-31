@@ -40,7 +40,7 @@ export class LoginPage {
       console.log(res);
       if(res['permission'] == 'GRANTED'){
         let policemanID = res['policemanID'];
-        localStorage.setItem(JSON.stringify({policemanID}), 'policemanID');
+        localStorage.setItem('policeman', JSON.stringify({policemanID}));
         this.navCtrl.setRoot(HomePage);
       } else {
         this.error = "ACCESS DENIED";

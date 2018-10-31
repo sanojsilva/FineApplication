@@ -41,7 +41,7 @@ export class DataProvider {
     )
   }
 
-  public addFines(fines) {
+  public addFines(fines, policeman) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=UTF-8'
     });
@@ -49,7 +49,7 @@ export class DataProvider {
 
     return this.http.post(
       this.url + '/add-fines',
-      JSON.stringify({fines}),
+      JSON.stringify({fines, policeman}),
       {headers}
     )
   }

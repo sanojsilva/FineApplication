@@ -60,7 +60,9 @@ export class AddFinePage {
     })
 
     if(selectedFines.length > 0) {
-      this.dataProvider.addFines(selectedFines).subscribe(res => {
+      const policeman = JSON.parse(localStorage.getItem('policeman'));
+      console.log(policeman);
+      this.dataProvider.addFines(selectedFines, policeman).subscribe(res => {
         console.log(res);
       })
     }
