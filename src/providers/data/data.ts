@@ -30,4 +30,28 @@ export class DataProvider {
     )
   }
 
+  public getFines() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
+
+    return this.http.get(
+      this.url + '/get-fines',
+      {headers}
+    )
+  }
+
+  public addFines(fines) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
+    
+
+    return this.http.post(
+      this.url + '/add-fines',
+      JSON.stringify({fines}),
+      {headers}
+    )
+  }
+
 }

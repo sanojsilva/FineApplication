@@ -37,7 +37,10 @@ export class LoginPage {
     
     //console.log(this.username, this.password);
     this.authProvider.login(this.username, this.password).subscribe(res => {
+      console.log(res);
       if(res['permission'] == 'GRANTED'){
+        let policemanID = res['policemanID'];
+        localStorage.setItem(JSON.stringify({policemanID}), 'policemanID');
         this.navCtrl.setRoot(HomePage);
       } else {
         this.error = "ACCESS DENIED";

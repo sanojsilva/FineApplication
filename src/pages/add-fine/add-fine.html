@@ -13,12 +13,17 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
+<ion-content>
 
+  <h3 style="text-align: center; text-transform: uppercase; font-weight: bold; border-bottom: 1px solid black; padding-bottom: 8px;">Fines</h3>
+
+  <ion-list>
     <ion-item *ngFor="let fine of fines">
-      <ion-label>{{ fine.name }}</ion-label>
+      <ion-label text-wrap>{{ fine.name }}</ion-label>
+      <ion-label style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs.{{ fine.amount }} /=</ion-label> 
       <ion-checkbox [(ngModel)]="fine.selected"></ion-checkbox>
+      
+      
     </ion-item>
 
     <ion-item>
