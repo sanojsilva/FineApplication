@@ -18,23 +18,31 @@ import { AddFinePage } from '../add-fine/add-fine';
 })
 export class LicensePage {
 
+  licenseData: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LicensePage');
+    this.licenseData = this.navParams.get('data');
   }
 
   onAddFineClick() {
-    this.navCtrl.push(AddFinePage);
+    this.navCtrl.push(AddFinePage, {
+      data: this.licenseData
+    });
   }
 
   onHistoryClick() {
-    this.navCtrl.push(HistoryPage);
+    this.navCtrl.push(HistoryPage, {
+      data: this.licenseData
+    });
   }
 
   onDetailsClick() {
-    this.navCtrl.push(LicenseDetailPage);
+    this.navCtrl.push(LicenseDetailPage, {
+      data: this.licenseData
+    });
   }
 
 }

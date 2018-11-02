@@ -4,8 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 export const environment = {
     production: false,
-    apiHost: '//192.168.1.21:4200',
-    //apiHost: '//192.168.8.100/icemanapi/web/v1',
+    apiHost: '//192.168.8.104:4200',
     tokenName: 'backend-token'
   };
   

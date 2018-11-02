@@ -13,6 +13,22 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding *ngIf="history">
+   <ion-card *ngFor="let record of history">
+    <ion-card-content>
+      <ion-card-title>
+        Finesheet No: {{ record.finesheetNo }}
+      </ion-card-title>
+      <ion-list>
+        <ion-item>
+          <h2>Issued Date</h2>
+          <p>{{record.issuedDate | date}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Expiry Date</h2>
+          <p>{{record.expiryDate | date}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

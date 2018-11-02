@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-
+import { LicensePage } from '../license/license';
 /**
  * Generated class for the AddFinePage page.
  *
@@ -17,11 +17,13 @@ import { DataProvider } from '../../providers/data/data';
 export class AddFinePage {
 
   fines: any[] = [];
+  licenseData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataProvider: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataProvider: DataProvider, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
+    this.licenseData = this.navParams.get('data');
     this.getFines();
     // for(let i=0; i<5; i++) {
     //   let fine = {
@@ -49,6 +51,16 @@ export class AddFinePage {
     })
   }
 
+  presentToast(message) {
+    const toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top',
+      cssClass: 'red'
+    });
+    toast.present();
+  }
+
   onSetClick() {
     let selectedFines = [];
     this.fines.forEach((fine) => {
@@ -61,9 +73,15 @@ export class AddFinePage {
 
     if(selectedFines.length > 0) {
       const policeman = JSON.parse(localStorage.getItem('policeman'));
-      console.log(policeman);
-      this.dataProvider.addFines(selectedFines, policeman).subscribe(res => {
-        console.log(res);
+      const administrativeNo = this.licenseData.administativeNumber;
+      this.dataProvider.addFines(selectedFines, policeman, administrativeNo).subscribe(res => {
+        if (res['desp'] == 'FINE ADDED') {
+          this.presentToast("FINE ADDED SUCCESSFULLY");
+          setTimeout(() => {
+            this.navCtrl.pop();
+          }, 1000);
+          
+        }
       })
     }
   }

@@ -28,22 +28,34 @@ export class HomePage {
 
   onScanClick(){
 
-    this.dataProvider.validateCode('2343').subscribe((res) => {
-      if(res['validated'] == true) {
-        this.navCtrl.push(LicensePage);
+    // this.dataProvider.validateCode('B2351204').subscribe((res) => {
+    //   if(res['validated'] == true) {
+    //     this.navCtrl.push(LicensePage, {
+    //       data: res["data"]
+    //     });
+    //   }
+    //   console.log(res);
+    // })
+
+
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.scannedText = barcodeData.text;
+      if (this.scannedText != "" || this.scannedText != null) {
+        this.dataProvider.validateCode(this.scannedText).subscribe((res) => {
+          if(res['validated'] == true) {
+            this.navCtrl.push(LicensePage, {
+                data: res["data"]
+              });
+          }
+          console.log(res);
+        })
       }
-      console.log(res);
-    })
-
-
-    // this.barcodeScanner.scan().then(barcodeData => {
-    //   this.scannedText = barcodeData.text;
-    //   this.dataProvider.validateCode();
-    // })
-    // .catch(err => {
-    //   throw err;
       
-    // })
+    })
+    .catch(err => {
+      throw err;
+      
+    })
   }
 
 }

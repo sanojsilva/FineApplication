@@ -15,11 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LicenseDetailPage {
 
+  data: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LicenseDetailPage');
+    this.data = this.navParams.get('data');
+    console.log(this.data);
   }
 
 }

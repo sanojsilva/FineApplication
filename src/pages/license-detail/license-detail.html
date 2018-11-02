@@ -14,5 +14,47 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngIf="data">
+    <ion-card-content>
+      <ion-card-title>
+        <span id="licenseHeading">License No</span>
+        <br>
+        <span id="licenseText">{{ data.linenceNumber }}</span>
+      </ion-card-title>
+      <ion-list>
+        <ion-item>
+          <h2>Administrative No</h2>
+          <p>{{data.administativeNumber}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Surename</h2>
+          <p>{{data.sureName}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Other Names</h2>
+          <p>{{data.otherNames}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Date Of Birth</h2>
+          <p>{{data.dateOfBirth | date}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Address</h2>
+          <p>{{data.location}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Issued Date</h2>
+          <p>{{data.DateOfIssueOfTheLicence | date}}</p>
+        </ion-item>
+        <ion-item text-wrap>
+          <h2>Issued Authority</h2>
+          <p>{{data.issuingAuthority}}</p>
+        </ion-item>
+        <ion-item>
+          <h2>Date Of Expiry</h2>
+          <p>{{data.dateOfExperyOfTheLicence | date}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

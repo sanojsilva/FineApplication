@@ -41,7 +41,18 @@ export class DataProvider {
     )
   }
 
-  public addFines(fines, policeman) {
+  public getHistory(administrativeNo) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
+  
+    return this.http.get(
+      this.url + '/get-history?administrativeNo=' + administrativeNo,
+      {headers}
+    )
+  }
+
+  public addFines(fines, policeman, administrativeNo) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=UTF-8'
     });
@@ -49,7 +60,7 @@ export class DataProvider {
 
     return this.http.post(
       this.url + '/add-fines',
-      JSON.stringify({fines, policeman}),
+      JSON.stringify({fines, policeman, administrativeNo}),
       {headers}
     )
   }
